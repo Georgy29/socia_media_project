@@ -35,6 +35,9 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
   }
 
   if (meQuery.isPending) {
+    if (meQuery.fetchStatus === "idle") {
+      return <Navigate to="/login" replace state={{ from: location }} />;
+    }
     return <FullPageStatus message="Loading..." />;
   }
 
@@ -66,14 +69,17 @@ function RequireGuest({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-export default function App() {
-  useMeQuery();
+function RootRedirect() {
+  const token = getToken();
+  return <Navigate to={token ? "/feed" : "/login"} replace />;
+}
 
+export default function App() {
   return (
     <BrowserRouter>
       <Suspense fallback={<FullPageStatus message="Loading..." />}>
         <Routes>
-          <Route path="/" element={<Navigate to="/feed" replace />} />
+          <Route path="/" element={<RootRedirect />} />
           <Route
             path="/login"
             element={
@@ -122,7 +128,7 @@ export default function App() {
               </RequireAuth>
             }
           />
-          <Route path="*" element={<Navigate to="/feed" replace />} />
+          <Route path="*" element={<RootRedirect />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

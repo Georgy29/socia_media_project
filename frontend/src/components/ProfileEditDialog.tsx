@@ -16,6 +16,7 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -133,6 +134,9 @@ export function ProfileEditDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-2xl p-0" showCloseButton={false}>
+        <DialogDescription className="sr-only">
+          Update your profile information, avatar, and cover image.
+        </DialogDescription>
         <DialogHeader className="flex flex-row items-center justify-between gap-2 border-b border-border px-4 py-3">
           <div className="flex items-center gap-3">
             <DialogClose asChild>
