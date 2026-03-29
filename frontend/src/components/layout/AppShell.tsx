@@ -69,7 +69,9 @@ export function AppShell({
                   </Button>
                 </DialogClose>
               </div>
-              <div className="flex h-full flex-col gap-4 overflow-y-auto">{sidebar}</div>
+              <div className="flex flex-col gap-4 overflow-y-auto">
+                {sidebar}
+              </div>
             </DialogContent>
           </Dialog>
 
