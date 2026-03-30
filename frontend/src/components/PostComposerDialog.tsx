@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -65,6 +66,9 @@ export function PostComposerDialog({
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle className="text-base">New Post</DialogTitle>
+          <DialogDescription className="sr-only">
+            Create a new post and optionally attach an image.
+          </DialogDescription>
         </DialogHeader>
         <div className="border-muted-foreground/30 bg-muted/30 rounded-xl border border-dashed p-6 text-center">
           <div className="border-muted-foreground/40 bg-background mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl border border-dashed">
